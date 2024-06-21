@@ -13,11 +13,12 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Connect to the database
-connection().then(() => {
-    console.log("Database connected successfully");
-}).catch(e => {
+try{
+    connection();
+}
+catch(e){
     console.log('Database not connected', e);
-});
+};
 
 // Middleware
 app.use(express.json());
