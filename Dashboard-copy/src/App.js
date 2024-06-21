@@ -2,6 +2,9 @@ import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { FiSettings } from 'react-icons/fi';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
+import axios from 'axios';
+
+
 
 import { Navbar, Sidebar, ThemeSettings, Skeleton, PrivateRoutes } from './components';
 import { Home, CuttingDepartment,ProductionDepartment, FinishingDepartment, ErpDepartment, Error, Login, CuttingTemp, ActiveJobs, CuttingReports, ProductionReceived, ProductionReports, AllFinishingReports, FinishingReceived, Ironing, SumUpReport} from './pages';
@@ -11,6 +14,7 @@ import { useStateContext } from './contexts/ContextProvider';
 import ReceivedCutting from './pages/ReceivedCutting';
 
 const App = () => {
+  axios.defaults.withCredentials = true;
   const {setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings, user, department} = useStateContext();
   console.log({user, department});
   useEffect(() => {
