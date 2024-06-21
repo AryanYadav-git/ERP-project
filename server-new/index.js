@@ -21,7 +21,7 @@ try{
 
 app.use(express.json());
 app.use(cors({
-    origin: [process.env.FRONTEND_URL],
+    origin: ["https://cf-dashboard-eight.vercel.app"],
     methods: ["POST","GET"],
     credentials: true,
 }));
