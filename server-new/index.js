@@ -20,11 +20,13 @@ try{
 }
 
 app.use(express.json());
-app.use(cors({
-    origin: ["https://cf-dashboard-eight.vercel.app"],
-    methods: ["POST","GET"],
-    credentials: true,
-}));
+app.use(cors(
+//     {
+//     origin: ["https://cf-dashboard-eight.vercel.app"],
+//     methods: ["POST","GET"],
+//     credentials: true,
+// }
+));
 
 app.use(helmet());
 
