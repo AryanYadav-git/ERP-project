@@ -20,12 +20,14 @@ try{
 }
 
 app.use(express.json());
+app.options('*', cors()); // Enable preflight requests for all routes
+
 app.use(cors(
-//     {
-//     origin: ["https://cf-dashboard-eight.vercel.app"],
-//     methods: ["POST","GET"],
-//     credentials: true,
-// }
+    {
+    origin: ["https://cf-dashboard-eight.vercel.app"],
+    methods: ["POST","GET"],
+    credentials: true,
+}
 ));
 
 app.use(helmet());
