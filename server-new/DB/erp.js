@@ -3,7 +3,7 @@ const {default: mongoose} = require('mongoose');
 
 
 const erpSchema = new mongoose.Schema({
-    jobNo : {type: Number, required: true},
+    jobNo : {type: String, required: true, maxLength:10},
     modelNo : {type: String, required: true},
     color : {type: String, required: true},
     sizes:[{

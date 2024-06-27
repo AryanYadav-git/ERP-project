@@ -65,9 +65,9 @@ const ErpForm = () => {
         const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/erp`,
             {
                 order:{
-                    jobNo:jobNo,
-                    modelNo: modelNo,
-                    color : color,
+                    jobNo:jobNo.toUpperCase(),
+                    modelNo: modelNo.toUpperCase(),
+                    color : color.toUpperCase(),
                     sizes: sizesList,
                     EstDelDate : del,
                     exJprDate : exJpr,
@@ -97,9 +97,9 @@ const ErpForm = () => {
         
         <div className="grid md:grid-cols-4 grid-cols-4 gap-6">
             <div className="md:col-span-1 col-span-2">
-                <label htmlFor="jobNo" className='text-sm'>Job No. : </label>
-                <input type='text' id='jobNo' className='border-[#eee] border-2 w-20 h-6' onChange={(e)=> {
-                    setJobNo(parseInt(e.target.value));
+                <label htmlFor="jobNo" className='text-sm' >Job No. : </label>
+                <input type='text' id='jobNo' maxLength='10' className='border-[#eee] border-2 w-20 h-6' onChange={(e)=> {
+                    setJobNo(e.target.value);
                 }}/>
             </div>
             <div className="md:col-span-1 col-span-2">
@@ -144,13 +144,13 @@ const ErpForm = () => {
             </div>
             <div className=" md:col-span-2 col-span-4">
                 <label htmlFor="deliveryDate" className='text-sm'>Est Delivery date : </label>
-                <input type='text' id='deliveryDate' className='border-[#eee] border-2 w-30 h-6 pl-1' placeholder='yyyy-mm-dd' onChange={(e)=> {
+                <input type='text' id='deliveryDate' className='border-[#eee] border-2 w-30 h-6 pl-1' maxLength='11' placeholder='yyyy-mm-dd' onChange={(e)=> {
                     setDel(e.target.value);
                 }}/>
             </div>
             <div className=" md:col-span-2 col-span-4">
                 <label htmlFor="jprDate" className='text-sm'>Ex Jpr Date date : </label>
-                <input type='text' id='jprDate' className='border-[#eee] border-2 w-30 h-6' placeholder='yyyy-mm-dd' onChange={(e)=> {
+                <input type='text' id='jprDate' className='border-[#eee] border-2 w-30 h-6' maxLength='11' placeholder='yyyy-mm-dd' onChange={(e)=> {
                     setExJpr(e.target.value);
                 }}/>
             </div>
