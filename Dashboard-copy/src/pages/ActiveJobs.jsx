@@ -24,14 +24,12 @@ const ActiveJobs = () => {
     if(response.data.message){
       toast.error(response.data.message)
     }
-    console.log(response.data);
     setErpData(response.data.orders);
     setActiveOrders(response.data.active);
   }
 
     const handleButtonClick = async (record) => {
       try {
-        console.log(record);
           const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/cutting/update-active`,{ id: record._id, department:myDepartment }, {
             headers: {
               'Authorization':localStorage.getItem('token'),
@@ -41,13 +39,10 @@ const ActiveJobs = () => {
           // if (!response.ok) {
           //   throw new Error('Failed to update status');
           // }
-          console.log('Status update successful');
-          console.log(response);
           toast.success(response.data.message);
           // Refresh the grid data or update the record locally
           // record.status = 'Active'; // Update the status locally if needed
       } catch (error) {
-        console.log('Error updating status:', error);
         toast.error(error.response.data.message)
           
       }
@@ -59,7 +54,6 @@ const ActiveJobs = () => {
         <button
           className="e-button"
           onClick={() => {
-            console.log(props);
             handleButtonClick(props)}}
           // disabled={props.status === 'Active'}
         >
@@ -74,7 +68,6 @@ const ActiveJobs = () => {
         <Header title="Active Orders "/>
         <div className="flex mb-2"><button className="flex items-center justify-center bg-gray-200 p-2 rounded-lg hover:bg-gray-300" onClick={()=>{
         try{
-          console.log('in onclick')
           retrieveOrders();
         }catch(e){toast.error('error')}
       }}>Refresh <LuRefreshCw/></button></div>

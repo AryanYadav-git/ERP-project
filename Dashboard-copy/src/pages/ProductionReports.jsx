@@ -48,7 +48,6 @@ const ProductionReports = () => {
         if(response.data.message){
           toast.error(response.data.message)
         }
-        console.log(response.data);
         setProductionReportsData(response.data);
     }
     
@@ -68,7 +67,6 @@ const ProductionReports = () => {
             className="flex items-center justify-center bg-gray-200 p-2 rounded-lg hover:bg-gray-300"
             onClick={() => {
               try {
-                console.log("in onclick");
                 retrieveOrders();
               } catch (e) {
                 toast.error("error");

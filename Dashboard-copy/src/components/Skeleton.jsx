@@ -8,7 +8,6 @@ import { FiSettings } from 'react-icons/fi';
 
 const Skeleton = () => {
     const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings, user } = useStateContext();
-  console.log(user);
   useEffect(() => {
     const currentThemeColor = localStorage.getItem('colorMode');
     const currentThemeMode = localStorage.getItem('themeMode');

@@ -165,7 +165,7 @@ export const ActiveOrdersGrid = [
 export const cuttingReportsGrid = [
   {
     field: "jobNo",
-    headerText: "job No.",
+    headerText: "Job No.",
     width: "100",
     textAlign: "Center",
   },
@@ -378,6 +378,14 @@ export const sumupReportGrid = [
     width: "100",
     textAlign: "Center",
   },
+
+  {
+    field: "estQty",
+    headerText: "Est Qty",
+    width: "100",
+    textAlign: "Center",
+  },
+  
   {
     field: "totalCut",
     headerText: "Total Cut",

@@ -16,7 +16,6 @@ import ReceivedCutting from './pages/ReceivedCutting';
 const App = () => {
   axios.defaults.withCredentials = true;
   const {setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings, user, department} = useStateContext();
-  console.log({user, department});
   useEffect(() => {
     const currentThemeColor = localStorage.getItem('colorMode');
     const currentThemeMode = localStorage.getItem('themeMode');

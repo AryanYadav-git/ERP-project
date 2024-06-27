@@ -81,13 +81,11 @@ const ErpForm = () => {
             
         })
         if(response.data.message){
-            console.log("in toast")
             toast.success(response.data.message);
         }
     }catch(e){
         toast.error(e.response.data.message);
-            console.log(e)
-        }
+    }
 
     }
 
@@ -145,7 +143,7 @@ const ErpForm = () => {
                 </div>
             </div>
             <div className=" md:col-span-2 col-span-4">
-                <label htmlFor="deliveryDate" className='text-sm'>Delivery date : </label>
+                <label htmlFor="deliveryDate" className='text-sm'>Est Delivery date : </label>
                 <input type='text' id='deliveryDate' className='border-[#eee] border-2 w-30 h-6 pl-1' placeholder='yyyy-mm-dd' onChange={(e)=> {
                     setDel(e.target.value);
                 }}/>

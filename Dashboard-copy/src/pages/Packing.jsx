@@ -21,7 +21,6 @@ const Packing = () => {
     const myDepartment = ['finishing','admin'];
     const {department, packData, setPackData} = useStateContext();
     const isDepartment = myDepartment.includes(department);
-    console.log(isDepartment);
     let grid;
     // const toolbar = ['ExcelExport'];
     
@@ -48,7 +47,6 @@ const Packing = () => {
         if(response.data.message){
           toast.error(response.data.message)
         }
-        console.log(response.data);
         setPackData(response.data);
     }
     
@@ -67,7 +65,6 @@ const Packing = () => {
             className="flex items-center justify-center bg-gray-200 p-2 rounded-lg hover:bg-gray-300"
             onClick={() => {
               try {
-                console.log("in onclick");
                 retrieveOrders();
               } catch (e) {
                 toast.error("error");

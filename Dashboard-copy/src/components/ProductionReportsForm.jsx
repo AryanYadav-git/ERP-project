@@ -40,13 +40,11 @@ const ProductionReportsForm = () => {
               }
             );
             if(response.data.message){
-                console.log("in toast")
                 toast.success(response.data.message);
             }
 
         }catch(e) {
             toast.error(e.response.data.message);
-            console.log(e)
         }}
     
         const handleChange = (event) => {

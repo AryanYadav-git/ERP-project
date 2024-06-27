@@ -27,7 +27,6 @@ const ErpOrdersDetails = () => {
       if(response.data.message){
         toast.error(response.data.message)
       }
-      console.log(response.data);
       setErpData(response.data.orders);
       setActiveOrders(response.data.active);
     }
@@ -49,7 +48,6 @@ const ErpOrdersDetails = () => {
         <Header category="Erp Department" title="All Orders" />
         <div className="flex mb-2"><button className="flex items-center justify-center bg-gray-200 p-2 rounded-lg hover:bg-gray-300" onClick={()=>{
           try{
-            console.log('in onclick')
             retrieveOrders();
           }catch(e){toast.error('error')}
         }}>Refresh <LuRefreshCw/></button></div>

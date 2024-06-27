@@ -23,23 +23,18 @@ const Login = () => {
       if(response.data.message){
         toast.error(response.data.message)
       }
-      console.log(response.data);
       setErpData(response.data.orders);
       setActiveOrders(response.data.active);
     }
 
     const init = async () => {
         try {
-            console.log('1');
             const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/admin/me`, {
                 headers: {
                     "Authorization": localStorage.getItem("token")
                 }
             });
-            console.log('hello2')
-            console.log(response.data);
             if(response.data.username){
-              console.log(response.data)
               setName(response.data.name);
               setUser(response.data.username);
               setDepartment(response.data.department);
@@ -57,7 +52,6 @@ const Login = () => {
       };
     useEffect(() => {
         if (department) {
-            console.log(department);
             retrieveOrders();
             if(['master', 'admin'].includes(department)){
               navigate(`/`);
@@ -82,7 +76,6 @@ const Login = () => {
             setPassword(e.target.value);
         }} placeholder='password'/>
         <button className='border-1 p-2 w-1/2 rounded-lg text-white bg-slate-500' onClick={async () => {
-            await console.log('hello');
             const res = await fetch(`${process.env.REACT_APP_BASE_URL}/admin/login`, {
                 method: "POST",
                 body: JSON.stringify({
@@ -95,11 +88,9 @@ const Login = () => {
             });
 
             const data = await res.json();
-            console.log(data);
             localStorage.setItem("token",data.token);
             // localStorage.setItem("token",null);
             await init();
-            console.log(department);
             // navigate('/');
             // navigate(`/${department}-department`);
             // window.location = "/";

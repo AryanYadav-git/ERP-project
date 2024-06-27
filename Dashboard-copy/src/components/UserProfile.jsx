@@ -59,7 +59,6 @@ const UserProfile = () => {
       <button
       type="button"
       onClick={() => {
-        console.log("in logout")
         localStorage.setItem("token", null);
         setUser(null);
         setDepartment(null);

@@ -47,7 +47,6 @@ const FinishingReceived = () => {
         if(response.data.message){
           toast.error(response.data.message)
         }
-        console.log(response.data);
         setProductionReceivedData(response.data);
     }
     
@@ -67,9 +66,9 @@ const FinishingReceived = () => {
             className="flex items-center justify-center bg-gray-200 p-2 rounded-lg hover:bg-gray-300"
             onClick={() => {
               try {
-                console.log("in onclick");
                 retrieveOrders();
               } catch (e) {
+                console.log(e)
                 toast.error("error");
               }
             }}

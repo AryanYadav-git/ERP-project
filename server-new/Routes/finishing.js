@@ -15,6 +15,7 @@ router.post('/received', authenticateJwt, authDep, async (req, res) => {
         // console.log(reqBody);
         const entry = await FinishingReceived.findOne({date: reqDate});
         const record = await FinalReport.findOne({jobNo:`${jobNo}${modelNo}`});
+        console.log(record);
         record.dispatchToFinishing += Number(qty);
         // console.log(entry);
         if(!entry){

@@ -99,9 +99,9 @@ router.post('/update-active', authenticateJwt, authDep, async (req, res) => {
         return;
       }
       console.log("with entry");
-      const {jobNo, modelNo, color, orderQty} = entry;
+      const {jobNo, modelNo, color, orderQty, totalEstQty} = entry;
       console.log(jobNo, modelNo, color, orderQty);
-      await new FinalReport({jobNo:`${jobNo}${modelNo}`, color:color, orderQty: orderQty}).save();
+      await new FinalReport({jobNo:`${jobNo}${modelNo}`, color:color, orderQty: orderQty, estQty:totalEstQty}).save();
       entry.status = "Active";
       await entry.save();
       res.status(200).send({ message: "Activated" });
