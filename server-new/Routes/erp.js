@@ -8,19 +8,21 @@ router.post('/',authenticateJwt, authDep, async(req, res) => {
     try{
         const reqOrder = req.body.order;
         console.log(reqOrder);
-        const order = await ERP.findOne({orderNo: reqOrder.orderNo, color: reqOrder.color, EstDelDate: reqOrder.EstDelDate});
+        const order = await ERP.findOne({jobNo: reqOrder.jobNo, color: reqOrder.color, EstDelDate: reqOrder.EstDelDate});
         console.log("1");
         if(order){
             res.status(400).send({message: 'order already exists'});
             return;
         }else{
             let OrderQty = 0;
+            let totalEstQty = 0;
             reqOrder.sizes.map((item) => {
                 // console.log(item);
                 OrderQty += Number(item.sizeQty);
+                totalEstQty += Number(item.estQty);
             });
             // console.log(OrderQty);
-            await new ERP({...req.body.order, orderQty:OrderQty}).save();
+            await new ERP({...req.body.order, orderQty:OrderQty, totalEstQty}).save();
             res.status(200).send({ message: "New order created successfully" });
             return;
         }

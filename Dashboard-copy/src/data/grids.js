@@ -103,6 +103,11 @@ export const erpGrid = [
     width: '120',
     textAlign: 'Center' },
 
+    { field: 'totalEstQty',
+    headerText: 'Est. Quantity',
+    width: '120',
+    textAlign: 'Center' },
+
     { field: 'EstDelDate',
     headerText: 'Est. Delivery date',
     width: '125',

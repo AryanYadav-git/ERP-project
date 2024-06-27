@@ -10,7 +10,8 @@ const ErpForm = () => {
     const [sizesList, setSizesList] = useState([
         {
           size: "",
-          sizeQty: 0, 
+          sizeQty: 0,
+          estQty: 0,
         }
     ]);
 
@@ -28,12 +29,20 @@ const ErpForm = () => {
         setSizesList(newInputList);
     }
 
+    const handleEstSizeQtyChange = (event, index) => {
+        const { value } = event.target
+        const newInputList = [...sizesList]
+        newInputList[index].estQty = value
+        setSizesList(newInputList);
+    }
+
     const handleListAdd = () => {
         setSizesList([
           ...sizesList,
           {
             size: "",
-            sizeQty: 0
+            sizeQty: 0,
+            estQty: 0
           }
         ])
     }
@@ -111,9 +120,10 @@ const ErpForm = () => {
                 <h3 className='w-full'>Sizes : </h3>
                 <div className="sizes flex flex-col px-16  w-full justify-center  gap-1 ">
                     <div className=" h-full md:w-[40%] flex flex-col gap-2">
-                        <div className="w-full grid grid-cols-3 gap-6">
+                        <div className="w-full grid grid-cols-4 gap-6">
                             <h1 className='col-span-1'>Size</h1>
                             <h1 className='col-span-1'>Size Qty.</h1>
+                            <h1 className='col-span-1'>Est Qty.</h1>
                             <div className="flex gap-2">
                                 <button className='bg-[#eee] h-8 w-8 rounded-full hover:bg-[#03C9D7]' title='Add new size' onClick={handleListAdd}>+</button>
                                 
@@ -122,9 +132,10 @@ const ErpForm = () => {
                         </div>
                         {
                             sizesList.map((input, index)=> (
-                                <div className="w-full grid grid-cols-3 gap-6 items-center">
+                                <div className="w-full grid grid-cols-4 gap-6 items-center">
                                     <input type="text" className='border-[#eee] border-2 col-span-1 h-6 p-1'  value={sizesList[index].size} onChange={(event) => handleSizeChange(event, index)}/>
                                     <input type="text" className='border-[#eee] border-2 col-span-1 h-6 p-1' value={sizesList[index].sizeQty} onChange={(event) => handleSizeQtyChange(event, index)}/>
+                                    <input type="text" className='border-[#eee] border-2 col-span-1 h-6 p-1' value={sizesList[index].estQty} onChange={(event) => handleEstSizeQtyChange(event, index)}/>
                                     <button className='bg-[#eee] h-8 w-8 rounded-full hover:bg-[#03C9D7]' title='Remove size' onClick={() => handleListRemove(index)}>-</button>
                                 </div>
                             ))

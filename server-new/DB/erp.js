@@ -9,8 +9,10 @@ const erpSchema = new mongoose.Schema({
     sizes:[{
         size: {type: String, required: true},
         sizeQty: {type: Number, required: true},
+        estQty: {type: Number, required: true},
     }],
     orderQty : {type: Number, required: true},
+    totalEstQty : {type: Number, required: true},
     EstDelDate : {type: String, default: "Not decided yet"},
     exJprDate : {type: String, required: true},
     status: {type: String, required: true}
