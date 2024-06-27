@@ -385,7 +385,7 @@ export const sumupReportGrid = [
     width: "100",
     textAlign: "Center",
   },
-  
+
   {
     field: "totalCut",
     headerText: "Total Cut",
