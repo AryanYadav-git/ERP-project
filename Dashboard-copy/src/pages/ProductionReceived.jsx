@@ -5,7 +5,7 @@ import ProductionReceivedForm from '../components/ProductionReceivedForm'
 import { useStateContext } from '../contexts/ContextProvider'
 import { LuRefreshCw } from 'react-icons/lu'
 import toast, {Toaster} from 'react-hot-toast';
-import { ReceivedGrid } from '../data/grids'
+import { productionReceivedGrid } from '../data/grids'
 import axios from 'axios'
 import {
     GridComponent,
@@ -20,9 +20,9 @@ import {
 } from "@syncfusion/ej2-react-grids";
 
 const ProductionReceived = () => {
-    const myDepartment = 'production';
+    const myDepartment = ['production', 'admin'];
     const {department, productionReceivedData, setProductionReceivedData} = useStateContext();
-    const isDepartment = department == myDepartment;
+    const isDepartment = myDepartment.includes(department);
     let grid;
     // const toolbar = ['ExcelExport'];
     
@@ -95,7 +95,7 @@ const ProductionReceived = () => {
               // toolbarClick={handleButtonClick} ref={g => grid = g}
             >
               <ColumnsDirective>
-                {ReceivedGrid.map((item, index) => (
+                {productionReceivedGrid.map((item, index) => (
                     <ColumnDirective key={index} {...item} />       
                 ))}
               </ColumnsDirective>

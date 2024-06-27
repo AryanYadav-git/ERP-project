@@ -25,13 +25,13 @@ const CuttingDepartment = () => {
     <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl ">
       <Header category="" title="Cutting Department "/>
       <div className="grid grid-cols-12 gap-4">
-      <div className="col-span-4 h-40 bg-gray-200 rounded-lg hover:bg-gray-300 grid place-items-center text-2xl font-bold cursor-pointer" onClick={() => {
+      <div className="md:col-span-4 col-span-12 h-40 bg-gray-200 rounded-lg hover:bg-gray-300 grid place-items-center text-2xl font-bold cursor-pointer" onClick={() => {
         navigate('/cutting-department/active-jobs');
       }}>Active Jobs</div>
       {/* <div className="col-span-4 h-40 bg-gray-200 rounded-lg hover:bg-gray-300 grid place-items-center text-2xl font-bold cursor-pointer" onClick={() => {
         navigate("/cutting-department/recieved");
       }}>Daily Recieved</div> */}
-      <div className="col-span-4 h-40 bg-gray-200 rounded-lg hover:bg-gray-300 grid place-items-center text-2xl font-bold cursor-pointer" onClick={() => {
+      <div className="md:col-span-4 col-span-12 h-40 bg-gray-200 rounded-lg hover:bg-gray-300 grid place-items-center text-2xl font-bold cursor-pointer" onClick={() => {
         navigate("/cutting-department/reports");
       }}>Daily Cutting Report</div>
       </div>

@@ -83,8 +83,8 @@ export const erpGrid = [
   ];
 
   export const erpGrid2 = [
-    { field: 'orderNo',
-    headerText: 'Order No.',
+    { field: 'jobNo',
+    headerText: 'Job No.',
     width: '100',
     textAlign: 'Center' },
 
@@ -98,13 +98,13 @@ export const erpGrid = [
     width: '120',
     textAlign: 'Center' },
 
-    { field: 'totalQty',
-    headerText: 'Total Quantity',
+    { field: 'orderQty',
+    headerText: 'Order Quantity',
     width: '120',
     textAlign: 'Center' },
 
-    { field: 'delDate',
-    headerText: 'Delivery date',
+    { field: 'EstDelDate',
+    headerText: 'Est. Delivery date',
     width: '125',
     textAlign: 'Center' },
 
@@ -116,8 +116,8 @@ export const erpGrid = [
 ]
 
 export const ActiveOrdersGrid = [
-  { field: 'orderNo',
-    headerText: 'Order No.',
+  { field: 'jobNo',
+    headerText: 'Job No.',
     width: '100',
     textAlign: 'Center' },
 
@@ -131,13 +131,13 @@ export const ActiveOrdersGrid = [
     width: '100',
     textAlign: 'Center' },
 
-    { field: 'totalQty',
-    headerText: 'Total Quantity',
+    { field: 'orderQty',
+    headerText: 'Order Quantity',
     width: '110',
     textAlign: 'Center' },
 
-    { field: 'delDate',
-    headerText: 'Delivery date',
+    { field: 'EstDelDate',
+    headerText: 'Est. Delivery date',
     width: '125',
     textAlign: 'Center' },
 
@@ -159,8 +159,8 @@ export const ActiveOrdersGrid = [
 
 export const cuttingReportsGrid = [
   {
-    field: "orderNo",
-    headerText: "Order No.",
+    field: "jobNo",
+    headerText: "job No.",
     width: "100",
     textAlign: "Center",
   },
@@ -191,12 +191,6 @@ export const cuttingReportsGrid = [
     textAlign: "Center",
   },
   
-  {
-    field: "lineNo",
-    headerText: "Line No.",
-    width: "100",
-    textAlign: "Center",
-  },
 
   {
     field: "qty",
@@ -260,8 +254,8 @@ export const cuttingReceivedGrid = [
 
 export const ReceivedGrid = [
   {
-    field: "orderNo",
-    headerText: "Order No.",
+    field: "jobNo",
+    headerText: "Job No.",
     width: "100",
     textAlign: "Center",
   },
@@ -304,8 +298,8 @@ export const ReceivedGrid = [
 
 export const ReportsGrid = [
   {
-    field: "orderNo",
-    headerText: "Order No.",
+    field: "jobNo",
+    headerText: "Job No.",
     width: "100",
     textAlign: "Center",
   },
@@ -417,3 +411,87 @@ export const sumupReportGrid = [
   },
 
 ]
+
+export const FinishingGrid = [
+  {
+    field: 'jobNo',
+    headerText: 'Job No',
+    width:'100',
+    textAlign: 'Center',
+  },
+  {
+    field: 'modelNo',
+    headerText: 'Model No',
+    width:'100',
+    textAlign: 'Center',
+  },
+  {
+    field: 'color',
+    headerText: 'Color',
+    width:'100',
+    textAlign: 'Center',
+  },
+  {
+    field: 'size',
+    headerText: 'Size',
+    width:'100',
+    textAlign: 'Center',
+  },
+  {
+    field: 'qty',
+    headerText: 'Qty',
+    width:'100',
+    textAlign: 'Center',
+  },
+  
+]
+
+export const productionReceivedGrid = [
+  {
+    field: "jobNo",
+    headerText: "Job No.",
+    width: "100",
+    textAlign: "Center",
+  },
+
+  {
+    field: "modelNo",
+    headerText: "Model No.",
+    width: "100",
+    textAlign: "Center",
+  },
+  {
+    field: "color",
+    headerText: "Color",
+    width: "100",
+    textAlign: "Center",
+  },
+  {
+    field: "size",
+    headerText: "Size",
+    width: "100",
+    textAlign: "Center",
+  },
+
+  {
+    field: "layer",
+    headerText: "Layer",
+    width: "100",
+    textAlign: "Center",
+  },
+  
+  {
+    field: "lineNo",
+    headerText: "Line No.",
+    width: "100",
+    textAlign: "Center",
+  },
+
+  {
+    field: "qty",
+    headerText: "Quantity",
+    width: "100",
+    textAlign: "Center",
+  },
+
+];

@@ -14,10 +14,10 @@ const router = express.Router();
 router.post('/reports', authenticateJwt, authDep, async (req, res) => {
     try{
         const reqDate = req.body.date;
-        const {orderNo, modelNo, qty} = req.body.entry;
+        const {jobNo, modelNo, qty} = req.body.entry;
         // console.log(reqBody);
         const entry = await productionReports.findOne({date: reqDate});
-        const record = await FinalReport.findOne({jobNo:`${orderNo}${modelNo}`});
+        const record = await FinalReport.findOne({jobNo:`${jobNo}${modelNo}`});
         record.totalProd += Number(qty);
         // console.log(record);
         // console.log(entry);
@@ -43,11 +43,11 @@ router.post('/reports', authenticateJwt, authDep, async (req, res) => {
 router.post('/received', authenticateJwt, authDep, async (req, res) => {
     try{
         const reqDate = req.body.date;
-        const {orderNo, modelNo, qty} = req.body.entry;
+        const {jobNo, modelNo, qty} = req.body.entry;
 
         // console.log(reqBody);
         const entry = await productionReceived.findOne({date: reqDate});
-        const record = await FinalReport.findOne({jobNo:`${orderNo}${modelNo}`});
+        const record = await FinalReport.findOne({jobNo:`${jobNo}${modelNo}`});
         record.totalIssue += Number(qty);
         // console.log(entry);
         if(!entry){

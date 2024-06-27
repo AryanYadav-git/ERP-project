@@ -13,9 +13,10 @@ router.post('/reports', authenticateJwt, authDep, async (req, res) => {
     try{
         const reqDate = req.body.date;
         // console.log(reqBody);
-        const {orderNo, modelNo, qty} = req.body.entry;
+        const {jobNo, modelNo, qty} = req.body.entry;
         const entry = await cuttingReports.findOne({date: reqDate});
-        const record = await FinalReport.findOne({jobNo:`${orderNo}${modelNo}`});
+        const record = await FinalReport.findOne({jobNo:`${jobNo}${modelNo}`});
+        console.log(record);
         record.totalCut += Number(qty);
         // console.log(typeof(record.totalCut), typeof(qty));
         // console.log(entry);
@@ -45,7 +46,7 @@ router.post('/received', authenticateJwt, authDep, async (req, res) => {
         const entry = await cuttingReceived.findOne({date: reqDate});
         // console.log(entry);
         if(!entry){
-            console.log("in not entry")
+            console.log("in not entry");
             let newArray = [];
             newArray.push(req.body.entry);
             await new cuttingReceived({date: req.body.date, entries:newArray}).save();
@@ -98,9 +99,9 @@ router.post('/update-active', authenticateJwt, authDep, async (req, res) => {
         return;
       }
       console.log("with entry");
-      const {orderNo, modelNo, color, totalQty} = entry;
-      console.log(orderNo, modelNo, color, totalQty);
-      await new FinalReport({jobNo:`${orderNo}${modelNo}`, color:color, orderQty: totalQty}).save();
+      const {jobNo, modelNo, color, orderQty} = entry;
+      console.log(jobNo, modelNo, color, orderQty);
+      await new FinalReport({jobNo:`${jobNo}${modelNo}`, color:color, orderQty: orderQty}).save();
       entry.status = "Active";
       await entry.save();
       res.status(200).send({ message: "Activated" });

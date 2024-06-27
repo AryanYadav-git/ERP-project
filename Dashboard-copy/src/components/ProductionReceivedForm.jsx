@@ -6,14 +6,13 @@ import { useStateContext } from '../contexts/ContextProvider';
 const ProductionReceivedForm = () => {
     const myDepartment = 'production';
     const {activeOrders} = useStateContext();
-
-    const [orderNo, setOrderNo] = useState();
+    const [jobNo, setJobNo] = useState();
     const [modelNo, setModelNo] = useState();
     const [size, setSize] = useState();
     const [color, setColor] = useState();
     const [selectedOption, setSelectedOption] = useState('');
-    // const [layer, setLayer] = useState();
-    // const [lineNo, setLineNo] = useState();
+    const [layer, setLayer] = useState();
+    const [lineNo, setLineNo] = useState();
     const [qty, setQty] = useState();
     const date = new Date().toJSON().slice(0,10);
 
@@ -23,9 +22,11 @@ const ProductionReceivedForm = () => {
               {
                 date,
                 entry: {
-                  orderNo,
+                  jobNo,
                   modelNo,
                   color,
+                  layer,
+                  lineNo,
                   size,
                   qty,
                 },
@@ -50,7 +51,7 @@ const ProductionReceivedForm = () => {
         const handleChange = (event) => {
             const selected = JSON.parse(event.target.value);
             setSelectedOption(event.target.value);
-            setOrderNo(selected.order);
+            setJobNo(selected.job);
             setModelNo(selected.model);
             setColor(selected.color);
         }
@@ -64,14 +65,14 @@ const ProductionReceivedForm = () => {
           <select name="select" id="select" className='border-[#eee] border-2 w-full h-6 ' value={selectedOption} onChange={handleChange}>
             <option value="" disabled selected>Select an option</option>
             {activeOrders.map((data)=> (
-              <option className='border-[#eee] border-2 w-full h-6' value={JSON.stringify({order: data.orderNo, model: data.modelNo, color: data.color})} >{data.orderNo} - {data.modelNo} - {data.color}</option>
+              <option className='border-[#eee] border-2 w-full h-6' value={JSON.stringify({job: data.jobNo, model: data.modelNo, color: data.color})} >{data.jobNo} - {data.modelNo} - {data.color}</option>
             ))}
           </select>
         </div>
         <div className="grid md:grid-cols-4 grid-cols-3 gap-6">
         <div className="">
-                <label htmlFor="orderNo" className='text-sm'>Order No. : </label>
-                <input type='text' id='orderNo' className='border-[#eee] border-2 w-20 h-6' value={orderNo} disabled/>
+                <label htmlFor="jobNo" className='text-sm'>Job No. : </label>
+                <input type='text' id='jobNo' className='border-[#eee] border-2 w-20 h-6' value={jobNo} disabled/>
             </div>
             <div className="">
                 <label htmlFor="ModelNo" className='text-sm'>Model No. : </label>
@@ -85,6 +86,18 @@ const ProductionReceivedForm = () => {
                 <label htmlFor="size" className='text-sm'>Size : </label>
                 <input type='text' id='size' className='border-[#eee] border-2 w-20 h-6' onChange={(e)=> {
                     setSize(e.target.value);
+                }}/>
+            </div>
+            <div className="">
+                <label htmlFor="layer" className='text-sm'>Layer : </label>
+                <input type='text' id='layer' className='border-[#eee] border-2 w-20 h-6' onChange={(e)=> {
+                    setLayer(e.target.value);
+                }}/>
+            </div>
+            <div className="">
+                <label htmlFor="lineNo" className='text-sm'>Line No : </label>
+                <input type='text' id='lineNo' className='border-[#eee] border-2 w-20 h-6' onChange={(e)=> {
+                    setLineNo(e.target.value);
                 }}/>
             </div>
             <div className="col-span-2">

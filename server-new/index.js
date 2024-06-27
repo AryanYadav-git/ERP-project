@@ -8,6 +8,7 @@ const erpRouter = require('./Routes/erp');
 const cuttingRouter = require('./Routes/cutting');
 const productionRouter = require('./Routes/production');
 const finalReportRouter = require('./Routes/report');
+const finishingRouter = require('./Routes/finishing');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -26,7 +27,7 @@ app.use(helmet());
 
 // Enable CORS for specific origin
 app.use(cors({
-    origin: "https://cf-dashboard-eight.vercel.app",
+    origin: ["https://cf-dashboard-eight.vercel.app"],
     methods: ["POST", "GET"],
     credentials: true
 }));
@@ -46,6 +47,7 @@ app.use('/erp', erpRouter);
 app.use('/cutting', cuttingRouter);
 app.use('/production', productionRouter);
 app.use('/report', finalReportRouter);
+app.use('/finishing', finishingRouter);
 
 // Start the server
 app.listen(port, () => {

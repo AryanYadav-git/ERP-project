@@ -3,13 +3,17 @@ const {default: mongoose} = require('mongoose');
 
 
 const erpSchema = new mongoose.Schema({
-    orderNo : {type: Number, required: true},
+    jobNo : {type: Number, required: true},
     modelNo : {type: String, required: true},
-    color : {type: String, required:true},
-    totalQty : {type: Number, required:true},
-    delDate : {type: String, required: true},
+    color : {type: String, required: true},
+    sizes:[{
+        size: {type: String, required: true},
+        sizeQty: {type: Number, required: true},
+    }],
+    orderQty : {type: Number, required: true},
+    EstDelDate : {type: String, default: "Not decided yet"},
     exJprDate : {type: String, required: true},
-    status: {type:String, required: true}
+    status: {type: String, required: true}
 });
 
 // const { erpDb } = connectDBs()

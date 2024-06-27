@@ -1,11 +1,9 @@
 import React, {useEffect}from 'react'
-import { Header } from '../components'
-import CuttingReceivedForm from '../components/CuttingReceivedForm'
-import CuttingReportsForm from '../components/CuttingReportsForm'
+import { Header, PackingForm } from '../components'
 import { useStateContext } from '../contexts/ContextProvider'
 import { LuRefreshCw } from 'react-icons/lu'
 import toast, {Toaster} from 'react-hot-toast';
-import { cuttingReportsGrid } from '../data/grids'
+import { FinishingGrid } from '../data/grids'
 import axios from 'axios'
 import {
     GridComponent,
@@ -19,10 +17,9 @@ import {
     Toolbar
   } from "@syncfusion/ej2-react-grids";
 
-
-const CuttingReports = () => {
-  const myDepartment = ['cutting','admin'];
-    const {department, cuttingReportsData, setCuttingReportsData} = useStateContext();
+const Packing = () => {
+    const myDepartment = ['finishing','admin'];
+    const {department, packData, setPackData} = useStateContext();
     const isDepartment = myDepartment.includes(department);
     console.log(isDepartment);
     let grid;
@@ -43,7 +40,7 @@ const CuttingReports = () => {
     
 
     const retrieveOrders = async () => {
-        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/cutting/reports/get`,{
+        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/finishing/packing/get`,{
             headers: {
             'Authorization': `${localStorage.getItem("token")}`
           }}
@@ -52,10 +49,9 @@ const CuttingReports = () => {
           toast.error(response.data.message)
         }
         console.log(response.data);
-        setCuttingReportsData(response.data);
+        setPackData(response.data);
     }
     
-
     useEffect(() => {
         retrieveOrders();
       },[]);
@@ -63,9 +59,9 @@ const CuttingReports = () => {
   return (
     <div>
       <Toaster />
-      {isDepartment && <CuttingReportsForm />}
+      {isDepartment && <PackingForm />}
       <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
-        <Header category="Cutting Department" title="Daily Cutting Reports" />
+        <Header category="Finishing Department" title="Daily Packing Reports" />
         <div className="flex mb-2">
           <button
             className="flex items-center justify-center bg-gray-200 p-2 rounded-lg hover:bg-gray-300"
@@ -82,7 +78,7 @@ const CuttingReports = () => {
           </button>
         </div>
 
-        {cuttingReportsData.map((data) => (
+        {packData.map((data) => (
           <div className="mb-4">
             <h3 className="text-gray-500">{data.date}</h3>
             <GridComponent
@@ -97,7 +93,7 @@ const CuttingReports = () => {
               // toolbarClick={handleButtonClick} ref={g => grid = g}
             >
               <ColumnsDirective>
-                {cuttingReportsGrid.map((item, index) => (
+                {FinishingGrid.map((item, index) => (
                     <ColumnDirective key={index} {...item} />       
                 ))}
               </ColumnsDirective>
@@ -111,4 +107,4 @@ const CuttingReports = () => {
   );
 }
 
-export default CuttingReports
+export default Packing

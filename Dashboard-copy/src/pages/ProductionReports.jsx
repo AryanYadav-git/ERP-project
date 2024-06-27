@@ -19,9 +19,9 @@ import {
   } from "@syncfusion/ej2-react-grids";
 
 const ProductionReports = () => {
-    const myDepartment = 'production';
+    const myDepartment = ['production', 'admin'];
     const {department, productionReportsData, setProductionReportsData} = useStateContext();
-    const isDepartment = department == myDepartment;
+    const isDepartment = myDepartment.includes(department);
     let grid;
     // const toolbar = ['ExcelExport'];
     

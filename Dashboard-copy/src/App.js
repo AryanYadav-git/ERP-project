@@ -7,7 +7,7 @@ import axios from 'axios';
 
 
 import { Navbar, Sidebar, ThemeSettings, Skeleton, PrivateRoutes } from './components';
-import { Home, CuttingDepartment,ProductionDepartment, FinishingDepartment, ErpDepartment, Error, Login, CuttingTemp, ActiveJobs, CuttingReports, ProductionReceived, ProductionReports, AllFinishingReports, FinishingReceived, Ironing, SumUpReport} from './pages';
+import { Home, CuttingDepartment,ProductionDepartment, FinishingDepartment, ErpDepartment, Error, Login, CuttingTemp, ActiveJobs, CuttingReports, ProductionReceived, ProductionReports, AllFinishingReports, FinishingReceived, Ironing, SumUpReport, ErpOrdersDetails, NewErpOrder, Packing} from './pages';
 import './app.css';
 
 import { useStateContext } from './contexts/ContextProvider';
@@ -89,7 +89,10 @@ const App = () => {
                   <Route path="/finishing-department/received" element={<FinishingReceived />} />
                   <Route path="/finishing-department/all-reports" element={<AllFinishingReports />} />
                   <Route path="/finishing-department/ironing" element={<Ironing />} />
+                  <Route path="/finishing-department/packing" element={<Packing />} />
                   <Route path="/erp-department" element={<ErpDepartment />} />
+                  <Route path="/erp-department/orders" element={<ErpOrdersDetails />} />
+                  <Route path="/erp-department/new" element={<NewErpOrder />} />
                   <Route path="/sum-up-report" element={<SumUpReport />} />
                 </Route>
                 

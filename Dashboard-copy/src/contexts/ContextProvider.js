@@ -177,6 +177,27 @@ const [activeOrders, setActiveOrders] = useState([
         }
     ]);
 
+    const [ironData, setIronData] = useState([
+        {
+            "jobNo":2402 ,
+            "modelNo": "M01",
+            'color':'beige',
+            "size": "xs",
+            "qty": 175
+        }
+    ])
+    const [packData, setPackData] = useState([
+        {
+            "jobNo":2402 ,
+            "modelNo": "M01",
+            'color':'beige',
+            "size": "xs",
+            "qty": 175
+        }
+    ]);
+
+    const [finishingReceivedData, setFinishingReceivedData] = useState([]);
+
     const [sumupReportData, setSumUpReportData] = useState([]);
     
 
@@ -193,7 +214,7 @@ const [activeOrders, setActiveOrders] = useState([
     const handleClick = (clicked) => setIsClicked({ ...initialState, [clicked]: true });
 
     return (
-        <StateContext.Provider value={{ currentColor, currentMode, activeMenu, screenSize, setScreenSize, handleClick, isClicked, initialState, setIsClicked, setActiveMenu, setCurrentColor, setCurrentMode, setMode, setColor, themeSettings, setThemeSettings, user, setUser, department, setDepartment, erpData, setErpData, name, setName, cuttingReceivedData, setCuttingReceivedData, cuttingReportsData, setCuttingReportsData, productionReceivedData, setProductionReceivedData, productionReportsData, setProductionReportsData, activeOrders, setActiveOrders, sumupReportData, setSumUpReportData}}>
+        <StateContext.Provider value={{ currentColor, currentMode, activeMenu, screenSize, setScreenSize, handleClick, isClicked, initialState, setIsClicked, setActiveMenu, setCurrentColor, setCurrentMode, setMode, setColor, themeSettings, setThemeSettings, user, setUser, department, setDepartment, erpData, setErpData, name, setName, cuttingReceivedData, setCuttingReceivedData, cuttingReportsData, setCuttingReportsData, productionReceivedData, setProductionReceivedData, productionReportsData, setProductionReportsData, activeOrders, setActiveOrders, sumupReportData, setSumUpReportData, ironData, setIronData, packData, setPackData, finishingReceivedData, setFinishingReceivedData}}>
             {children}
         </StateContext.Provider>
     );

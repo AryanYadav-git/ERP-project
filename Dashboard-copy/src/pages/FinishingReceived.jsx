@@ -1,7 +1,5 @@
 import React, {useEffect}from 'react'
-import { Header } from '../components'
-import ProductionReceivedForm from '../components/ProductionReceivedForm'
-// import CuttingReceivedForm from '../components/CuttingReceivedForm'
+import { Header, FinishingReceivedForm } from '../components'
 import { useStateContext } from '../contexts/ContextProvider'
 import { LuRefreshCw } from 'react-icons/lu'
 import toast, {Toaster} from 'react-hot-toast';
@@ -20,9 +18,9 @@ import {
 } from "@syncfusion/ej2-react-grids";
 
 const FinishingReceived = () => {
-  const myDepartment = 'finishing';
+  const myDepartment = ['finishing', 'admin'];
     const {department, productionReceivedData, setProductionReceivedData} = useStateContext();
-    const isDepartment = department == myDepartment;
+    const isDepartment = myDepartment.includes(department);
     let grid;
     // const toolbar = ['ExcelExport'];
     
@@ -41,7 +39,7 @@ const FinishingReceived = () => {
     
 
     const retrieveOrders = async () => {
-        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/production/received/get`,{
+        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/finishing/received/get`,{
             headers: {
             'Authorization': `${localStorage.getItem("token")}`
           }}
@@ -61,7 +59,7 @@ const FinishingReceived = () => {
   return (
     <div>
       <Toaster />
-      {isDepartment && <ProductionReceivedForm />}
+      {isDepartment && <FinishingReceivedForm />}
       <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
         <Header category="Finishing Department" title="Daily Issue to Finishing Reports" />
         <div className="flex mb-2">
