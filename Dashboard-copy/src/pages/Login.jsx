@@ -53,7 +53,7 @@ const Login = () => {
     useEffect(() => {
         if (department) {
             retrieveOrders();
-            if(['master', 'admin'].includes(department)){
+            if(['master', 'admin', 'viewer'].includes(department)){
               navigate(`/`);
               return;
             }

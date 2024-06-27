@@ -1,7 +1,7 @@
 const {default: mongoose} = require('mongoose');
 
 const reportSchema = mongoose.Schema({
-    jobNo: {type: String, required: true, },    
+    jobNo: {type: String, required: true },    
     color: {type: String, required: true},
     orderQty: {type: Number, required: true},
     estQty: {type: Number, required: true},
