@@ -3,7 +3,7 @@ const {default: mongoose} = require('mongoose');
 const finishingReceivedSchema = mongoose.Schema({
     date: String,
     entries:[{
-        jobNo: {type: Number, required: true},
+        jobNo : {type: String, required: true, maxLength:10},       
         modelNo: {type: String, required: true},
         color: {type: String, required: true},
         size: {type: String, required: true},
@@ -14,7 +14,7 @@ const finishingReceivedSchema = mongoose.Schema({
 const totalIronSchema = mongoose.Schema({
     date: String,
     entries:[{
-        jobNo: {type: Number, required: true},
+        jobNo: {type: String, required: true, maxLength:10},
         modelNo: {type: String, required: true},
         color: {type: String, required: true},
         size: {type: String, required: true},
@@ -25,7 +25,7 @@ const totalIronSchema = mongoose.Schema({
 const totalPackingSchema = mongoose.Schema({
     date: String,
     entries:[{
-        jobNo: {type: Number, required: true},
+        jobNo: {type: String, required: true, maxLength:10},
         modelNo: {type: String, required: true},
         color: {type: String, required: true},
         size: {type: String, required: true},
