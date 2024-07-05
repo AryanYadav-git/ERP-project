@@ -11,7 +11,7 @@ import {
 } from "@syncfusion/ej2-react-grids";
 import { LuRefreshCw } from "react-icons/lu";
 import { useStateContext } from '../contexts/ContextProvider';
-import { Header } from "../components";
+import { Header, SizeDescription } from "../components";
 import { erpGrid2 } from '../data/grids';
 import ErpForm from '../components/ErpForm';
 import toast, {Toaster} from 'react-hot-toast';
@@ -45,7 +45,7 @@ const ErpOrdersDetails = () => {
       {/* {isDepartment && <ErpForm />} */}
       <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
         
-        <Header category="Erp Department" title="All Orders" />
+        <Header category="Erp Department" title="ALL ORDERS" />
         <div className="flex mb-2"><button className="flex items-center justify-center bg-gray-200 p-2 rounded-lg hover:bg-gray-300" onClick={()=>{
           try{
             retrieveOrders();
@@ -68,7 +68,9 @@ const ErpOrdersDetails = () => {
           </ColumnsDirective>
           <Inject services={[Search, Page, Sort]} />
         </GridComponent>
+        {/* <SizeDescription/> */}
       </div>
+      
       </div>
     );
 }

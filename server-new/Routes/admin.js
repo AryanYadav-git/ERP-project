@@ -32,8 +32,12 @@ router.post("/signup", async (req, res) => {
     // if (error) {
     //     return res.status(400).send({ message: error.details[0].message });
     // }
-    const { username, password } = req.body;
-    console.log(req.body);
+    const { username, password, actionKey } = req.body;
+    // console.log(actionKey, process.env.ACTION_KEY, actionKey != process.env.ACTION_KEY);
+    if(actionKey != process.env.ACTION_KEY){
+      res.status(500).send({message: 'You are unauthorised for this process'});
+      return;
+    }
     const admin = await Admin.findOne({ username });
 
     if (admin) {
@@ -44,7 +48,8 @@ router.post("/signup", async (req, res) => {
     const hashPassword = await bcrypt.hash(password, salt);
     await new Admin({ ...req.body, password: hashPassword }).save();
     res.status(200).send({ message: "User created successfully" });
-  } catch {
+  } catch(e) {
+    console.log(e)
     res.status(500).json({ message: "Internal server error" });
   }
 });

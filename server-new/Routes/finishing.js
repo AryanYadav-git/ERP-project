@@ -54,17 +54,17 @@ router.post('/ironing/reports', authenticateJwt, authDep, async (req, res) => {
         let {qty} = req.body.entry;
         const reqOrder = await ERP.findOne({jobNo, modelNo});
         const finalRecord = await FinalReport.findOne({jobNo: `${jobNo}${modelNo}`});
-        const entry = await Ironing.findOne({date: reqDate});
+        let entry = await Ironing.findOne({date: reqDate});
         let totalIron = finalRecord.totalIron;
         console.log(totalIron);
         const sizes = reqOrder.sizes;
         // console.log(sizes);
         let i = 0;
-        let sizeQtyYet = sizes[0].sizeQty;
+        let sizeQtyYet = sizes[0].estQty;
         finalRecord.totalIron += Number(qty);
         while(totalIron >= sizeQtyYet){
             i++;
-            sizeQtyYet += sizes[i].sizeQty;    
+            sizeQtyYet += sizes[i].estQty;    
         }
         while(qty>0){
             if(qty <= sizeQtyYet-totalIron){
@@ -90,10 +90,11 @@ router.post('/ironing/reports', authenticateJwt, authDep, async (req, res) => {
                     entry.entries.push(toEntry);
                     await entry.save();
                 }
+                entry = await Ironing.findOne({date: reqDate});
                 qty = qty-(sizeQtyYet-totalIron);
                 totalIron = sizeQtyYet;
                 i++;
-                sizeQtyYet += sizes[i].sizeQty;
+                sizeQtyYet += sizes[i].estQty;
             }
         }
         finalRecord.save();
@@ -121,17 +122,17 @@ router.post('/packing/reports', authenticateJwt, authDep, async (req, res) => {
         let {qty} = req.body.entry;
         const reqOrder = await ERP.findOne({jobNo, modelNo});
         const finalRecord = await FinalReport.findOne({jobNo: `${jobNo}${modelNo}`});
-        const entry = await Packing.findOne({date: reqDate});
+        let entry = await Packing.findOne({date: reqDate});
         let totalPack = finalRecord.totalPacking;
         console.log(totalPack);
         const sizes = reqOrder.sizes;
         // console.log(sizes);
         let i = 0;
-        let sizeQtyYet = sizes[0].sizeQty;
+        let sizeQtyYet = sizes[0].estQty;
         finalRecord.totalPacking += Number(qty);
         while(totalPack >= sizeQtyYet){
             i++;
-            sizeQtyYet += sizes[i].sizeQty;    
+            sizeQtyYet += sizes[i].estQty;    
         }
         while(qty>0){
             if(qty <= sizeQtyYet-totalPack){
@@ -157,10 +158,11 @@ router.post('/packing/reports', authenticateJwt, authDep, async (req, res) => {
                     entry.entries.push(toEntry);
                     await entry.save();
                 }
+                entry = await Ironing.findOne({date: reqDate});
                 qty = qty-(sizeQtyYet-totalPack);
                 totalPack = sizeQtyYet;
                 i++;
-                sizeQtyYet += sizes[i].sizeQty;
+                sizeQtyYet += sizes[i].estQty;
             }
         }
         finalRecord.save();

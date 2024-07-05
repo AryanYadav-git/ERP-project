@@ -10,5 +10,6 @@ export { default as SparkLine } from './Charts/SparkLine';
 export { default as IroningForm } from './IroningForm';
 export { default as PackingForm } from './PackingForm';
 export { default as FinishingReceivedForm } from './FinishingReceivedForm';
+export { default as SizeDescription } from './SizeDescription';
 export { default as Skeleton } from './Skeleton';
 export { default as PrivateRoutes } from './PrivateRoutes';
