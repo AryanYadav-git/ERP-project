@@ -40,6 +40,7 @@ const ActiveJobs = () => {
           //   throw new Error('Failed to update status');
           // }
           toast.success(response.data.message);
+          retrieveOrders();
           // Refresh the grid data or update the record locally
           // record.status = 'Active'; // Update the status locally if needed
       } catch (error) {
