@@ -33,7 +33,7 @@ router.post("/signup", async (req, res) => {
     //     return res.status(400).send({ message: error.details[0].message });
     // }
     const { username, password, actionKey } = req.body;
-    console.log(actionKey, process.env.ACTION_KEY, actionKey != process.env.ACTION_KEY);
+    // console.log(actionKey, process.env.ACTION_KEY, actionKey != process.env.ACTION_KEY);
     if(actionKey != process.env.ACTION_KEY){
       res.status(500).send({message: 'You are unauthorised for this process'});
       return;
