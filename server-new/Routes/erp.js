@@ -12,7 +12,7 @@ router.post('/',authenticateJwt, authDep, async(req, res) => {
             res.send({message:'jobNo. length is more than limit - 10'});
             return;
         }
-        const order = await ERP.findOne({jobNo: reqOrder.jobNo, modelNo: reqOrder.modelNo});
+        const order = await ERP.findOne({jobNo: reqOrder.jobNo, modelNo: reqOrder.modelNo, color: reqOrder.color});
         console.log("1");
         if(order){
             res.status(400).send({message: 'order already exists'});
