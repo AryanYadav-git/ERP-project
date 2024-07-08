@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import {
   GridComponent,
@@ -15,9 +15,13 @@ import { Header, SizeDescription } from "../components";
 import { erpGrid2 } from '../data/grids';
 import ErpForm from '../components/ErpForm';
 import toast, {Toaster} from 'react-hot-toast';
+import { Navigate } from 'react-router-dom';
 
 const ErpOrdersDetails = () => {
+    const myDepartment = ['erp', 'admin'];
     const {erpData, setErpData, department, setActiveOrders} = useStateContext();
+    const isDepartment = myDepartment.includes(department);
+    const [showDetails, setShowDetails] = useState(null);
     const retrieveOrders = async () => {
       const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/erp/get`,{
           headers: {
@@ -35,10 +39,41 @@ const ErpOrdersDetails = () => {
       retrieveOrders();
     },[]);
     
-  
+
+    
     const toolbarOptions = ["Search"];
   
     const editing = { allowDeleting: true, allowEditing: true };
+
+    const detailsTemplate = (props) => {
+      return (
+        <button
+          className="e-button border-1 border-black p-1 rounded-md"
+          onClick={() => {
+            setShowDetails(props);
+            console.log(props)
+          }}
+        >
+          Show Details
+        </button>
+      )
+    }
+
+    const actionTemplate = (props) => {
+      return (
+        <button
+          className="e-button border-1 border-black p-1 rounded-md"
+          onClick={() => {
+            console.log(props);
+            // handleButtonClick(props)
+            
+          }}
+          // disabled={props.status === 'Active'}
+        >
+          Edit
+        </button>
+      );
+    };
   
     return (<div className="">
       <Toaster></Toaster>
@@ -63,12 +98,24 @@ const ErpOrdersDetails = () => {
         >
           <ColumnsDirective>
             {erpGrid2.map((item, index) => (
-              <ColumnDirective key={index} {...item} />
+              <ColumnDirective key={index} {...item} />   
             ))}
+            <ColumnDirective
+            headerText="Details"
+            template={detailsTemplate}
+            width="150"
+            textAlign="Center"
+          />
+            {/* {isDepartment && <ColumnDirective
+            headerText="Actions"
+            template={actionTemplate}
+            width="100"
+            textAlign="Center"
+          />} */}
           </ColumnsDirective>
           <Inject services={[Search, Page, Sort]} />
         </GridComponent>
-        {/* <SizeDescription/> */}
+        {showDetails && <SizeDescription orderDetails={showDetails}/>}
       </div>
       
       </div>
