@@ -13,9 +13,9 @@ router.post('/reports', authenticateJwt, authDep, async (req, res) => {
     try{
         const reqDate = req.body.date;
         // console.log(reqBody);
-        const {jobNo, modelNo, qty} = req.body.entry;
+        const {jobNo, modelNo,color, qty} = req.body.entry;
         const entry = await cuttingReports.findOne({date: reqDate});
-        const record = await FinalReport.findOne({jobNo:`${jobNo}${modelNo}`});
+        const record = await FinalReport.findOne({jobNo:`${jobNo}${modelNo}`, color});
         console.log(record);
         record.totalCut += Number(qty);
         // console.log(typeof(record.totalCut), typeof(qty));

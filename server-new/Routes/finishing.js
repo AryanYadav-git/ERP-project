@@ -10,11 +10,11 @@ const {authDep} = require('../middlewares/authDep');
 router.post('/received', authenticateJwt, authDep, async (req, res) => {
     try{
         const reqDate = req.body.date;
-        const {jobNo, modelNo, qty} = req.body.entry;
+        const {jobNo, modelNo,color, qty} = req.body.entry;
 
         // console.log(reqBody);
         const entry = await FinishingReceived.findOne({date: reqDate});
-        const record = await FinalReport.findOne({jobNo:`${jobNo}${modelNo}`});
+        const record = await FinalReport.findOne({jobNo:`${jobNo}${modelNo}`, color});
         console.log(record);
         record.dispatchToFinishing += Number(qty);
         // console.log(entry);
@@ -50,10 +50,10 @@ router.get('/received/get', authenticateJwt, async (req, res) => {
 router.post('/ironing/reports', authenticateJwt, authDep, async (req, res) => {
     try{
         const reqDate = req.body.date;
-        const {jobNo, modelNo} = req.body.entry;
+        const {jobNo, modelNo, color} = req.body.entry;
         let {qty} = req.body.entry;
         const reqOrder = await ERP.findOne({jobNo, modelNo});
-        const finalRecord = await FinalReport.findOne({jobNo: `${jobNo}${modelNo}`});
+        const finalRecord = await FinalReport.findOne({jobNo: `${jobNo}${modelNo}`, color});
         let entry = await Ironing.findOne({date: reqDate});
         let totalIron = finalRecord.totalIron;
         console.log(totalIron);
@@ -118,10 +118,10 @@ router.get('/ironing/get', authenticateJwt, async (req, res) => {
 router.post('/packing/reports', authenticateJwt, authDep, async (req, res) => {
     try{
         const reqDate = req.body.date;
-        const {jobNo, modelNo} = req.body.entry;
+        const {jobNo, modelNo, color} = req.body.entry;
         let {qty} = req.body.entry;
         const reqOrder = await ERP.findOne({jobNo, modelNo});
-        const finalRecord = await FinalReport.findOne({jobNo: `${jobNo}${modelNo}`});
+        const finalRecord = await FinalReport.findOne({jobNo: `${jobNo}${modelNo}`, color});
         let entry = await Packing.findOne({date: reqDate});
         let totalPack = finalRecord.totalPacking;
         console.log(totalPack);
