@@ -9,8 +9,7 @@ import {
 } from "@syncfusion/ej2-react-grids";
 import { useStateContext } from "../contexts/ContextProvider";
 import { employeesData, employeesGrid } from "../data/dummy";
-import { Header } from "../components";
-import CuttingForm from "../components/CuttingReceivedForm";
+import { Header} from "../components";
 import { useNavigate } from "react-router-dom";
 
 const CuttingDepartment = () => {
@@ -34,6 +33,10 @@ const CuttingDepartment = () => {
       <div className="md:col-span-4 col-span-12 h-40 bg-gray-200 rounded-lg hover:bg-gray-300 grid place-items-center text-2xl font-bold cursor-pointer" onClick={() => {
         navigate("/cutting-department/reports");
       }}>Daily Cutting Report</div>
+      
+      {/* <div className="md:col-span-4 col-span-12 h-40 bg-green-200 rounded-lg hover:bg-green-300 grid place-items-center text-2xl font-bold cursor-pointer" onClick={() => {
+        navigate("/cutting-department/lay-reports");
+      }}>Lay Sheet Report</div> */}
       </div>
     </div>
   );

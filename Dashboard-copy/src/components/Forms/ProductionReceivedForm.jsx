@@ -1,34 +1,33 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import toast, {Toaster} from 'react-hot-toast';
-import { useStateContext } from '../contexts/ContextProvider';
+import { useStateContext } from '../../contexts/ContextProvider';
 
-const ProductionReportsForm = () => {
+const ProductionReceivedForm = () => {
     const myDepartment = 'production';
     const {activeOrders} = useStateContext();
-
     const [jobNo, setJobNo] = useState();
     const [modelNo, setModelNo] = useState();
     const [size, setSize] = useState();
     const [color, setColor] = useState();
     const [selectedOption, setSelectedOption] = useState('');
-    // const [layer, setLayer] = useState();
+    const [layer, setLayer] = useState();
     const [lineNo, setLineNo] = useState();
     const [qty, setQty] = useState();
     const date = new Date().toJSON().slice(0,10);
 
     const submitNewEntry = async () => {
         try{
-            const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/production/reports`,
+            const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/production/received`,
               {
                 date,
                 entry: {
                   jobNo,
                   modelNo,
                   color,
-                  size,
-                //   layer,
+                  layer,
                   lineNo,
+                  size,
                   qty,
                 },
                 department: myDepartment,
@@ -87,15 +86,15 @@ const ProductionReportsForm = () => {
                     setSize(e.target.value);
                 }}/>
             </div>
-            {/* <div className="">
+            <div className="">
                 <label htmlFor="layer" className='text-sm'>Layer : </label>
                 <input type='text' id='layer' className='border-[#eee] border-2 w-20 h-6' onChange={(e)=> {
                     setLayer(e.target.value);
                 }}/>
-            </div> */}
-            <div className=" col-span-2">
-                <label htmlFor="lineNo" className='text-sm'>Line No. : </label>
-                <input type='text' id='lineNo' className='border-[#eee] border-2 w-30 h-6' onChange={(e)=> {
+            </div>
+            <div className="">
+                <label htmlFor="lineNo" className='text-sm'>Line No : </label>
+                <input type='text' id='lineNo' className='border-[#eee] border-2 w-20 h-6' onChange={(e)=> {
                     setLineNo(e.target.value);
                 }}/>
             </div>
@@ -120,4 +119,4 @@ const ProductionReportsForm = () => {
   )
 }
 
-export default ProductionReportsForm
+export default ProductionReceivedForm

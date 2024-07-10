@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import toast, {Toaster} from 'react-hot-toast';
-import { useStateContext } from '../contexts/ContextProvider';
+import { useStateContext } from '../../contexts/ContextProvider';
 
-const IroningForm = () => {
+const PackingForm = () => {
     const {activeOrders} = useStateContext();
     const myDepartment = 'finishing';
       const [jobNo, setJobNo] = useState();
@@ -16,9 +16,9 @@ const IroningForm = () => {
       const [qty, setQty] = useState();
       const date = new Date().toJSON().slice(0,10);
   
-      const submitNewIroning = async () => {
+      const submitNewPacking = async () => {
           try{
-              const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/finishing/ironing/reports`,
+              const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/finishing/packing/reports`,
                 {
                   date,
                   entry: {
@@ -91,7 +91,7 @@ const IroningForm = () => {
                   }}/>
               </div> */}
               <div className='col-span-1'>
-                  <button className='bg-[#eee] p-2 rounded-lg w-full hover:bg-[#03C9D7]' onClick={submitNewIroning}>Add New Entry</button>
+                  <button className='bg-[#eee] p-2 rounded-lg w-full hover:bg-[#03C9D7]' onClick={submitNewPacking}>Add New Entry</button>
               </div>
   
           </div>
@@ -99,4 +99,4 @@ const IroningForm = () => {
     )
 }
 
-export default IroningForm
+export default PackingForm

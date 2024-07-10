@@ -1,6 +1,6 @@
 import React, {useEffect}from 'react'
-import { Header } from '../components'
-import ProductionReceivedForm from '../components/ProductionReceivedForm'
+import { Header, ProductionReceivedForm } from '../components'
+// import ProductionReceivedForm from '../components/ProductionReceivedForm'
 // import CuttingReceivedForm from '../components/CuttingReceivedForm'
 import { useStateContext } from '../contexts/ContextProvider'
 import { LuRefreshCw } from 'react-icons/lu'

@@ -1,6 +1,7 @@
 export { default as Home } from './Home';
 export { default as CuttingDepartment } from './CuttingDepartment';
 export { default as CuttingReports } from './CuttingReports';
+export { default as CuttingLaysReports } from './CuttingLaysReports';
 export { default as CuttingTemp } from './CuttingTemp';
 export { default as ProductionDepartment } from './ProductionDepartment';
 export {default as ProductionReceived } from './ProductionReceived';

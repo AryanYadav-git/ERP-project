@@ -1,7 +1,5 @@
 import React, {useEffect}from 'react'
-import { Header } from '../components'
-import CuttingReceivedForm from '../components/CuttingReceivedForm'
-import CuttingReportsForm from '../components/CuttingReportsForm'
+import { Header,CuttingReportsForm } from '../components'
 import { useStateContext } from '../contexts/ContextProvider'
 import { LuRefreshCw } from 'react-icons/lu'
 import toast, {Toaster} from 'react-hot-toast';
