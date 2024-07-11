@@ -1,8 +1,11 @@
 import React from 'react'
+import { LaySheetForm } from '../components'
 
 const CuttingLaysReports = () => {
   return (
-    <div>CuttingLaysReports</div>
+    <div>
+        <LaySheetForm />
+    </div>
   )
 }
 

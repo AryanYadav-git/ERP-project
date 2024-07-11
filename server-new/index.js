@@ -27,8 +27,7 @@ app.use(helmet());
 
 // Enable CORS for specific origin
 app.use(cors({
-    origin: ["https://cf-dashboard-eight.vercel.app"],
-    // origin:["http://localhost:3001"],
+    origin:[process.env.FRONTEND_URL],
     methods: ["POST", "GET"],
     credentials: true
 }));

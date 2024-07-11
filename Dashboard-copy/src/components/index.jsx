@@ -7,6 +7,7 @@ export { default as ChartsHeader } from './ChartsHeader';
 export { default as ProductionReceivedForm } from './Forms/ProductionReceivedForm';
 export { default as ProductionReportsForm } from './Forms/ProductionReportsForm';
 export { default as ErpForm } from './Forms/ErpForm';
+export { default as LaySheetForm } from './Forms/LaySheetForm';
 export { default as CuttingReportsForm } from './Forms/CuttingReportsForm';
 export { default as Header } from './Header';
 export { default as SparkLine } from './Charts/SparkLine';
