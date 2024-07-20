@@ -34,9 +34,9 @@ const CuttingDepartment = () => {
         navigate("/cutting-department/reports");
       }}>Daily Cutting Report</div>
       
-      {/* <div className="md:col-span-4 col-span-12 h-40 bg-green-200 rounded-lg hover:bg-green-300 grid place-items-center text-2xl font-bold cursor-pointer" onClick={() => {
+      <div className="md:col-span-4 col-span-12 h-40 bg-green-200 rounded-lg hover:bg-green-300 grid place-items-center text-2xl font-bold cursor-pointer" onClick={() => {
         navigate("/cutting-department/lay-reports");
-      }}>Lay Sheet Report</div> */}
+      }}>Lay Sheet Report</div>
       </div>
     </div>
   );

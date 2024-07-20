@@ -17,4 +17,5 @@ export { default as PackingForm } from './Forms/PackingForm';
 export { default as FinishingReceivedForm } from './Forms/FinishingReceivedForm';
 export { default as SizeDescription } from './SizeDescription';
 export { default as Skeleton } from './Skeleton';
+export { default as Indicator } from './Indicator';
 export { default as PrivateRoutes } from './PrivateRoutes';

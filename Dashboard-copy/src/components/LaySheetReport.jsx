@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useStateContext } from '../contexts/ContextProvider'
+import Indicator from './Indicator';
+import { IoWarningOutline } from 'react-icons/io5';
 
 
 const LaySheetReport = () => {
@@ -95,10 +97,11 @@ const LaySheetReport = () => {
                 <h1 className='col-span-1 flex justify-center'>Palla</h1>
                 <h1 className='col-span-1 flex justify-center'>Total Palla</h1>
                 <h1 className='col-span-1 flex justify-center'>Wastage</h1>
-                <div className="flex col-span-1 gap-2 justify-center">
+                <div className="flex col-span-1 gap-1 justify-center">
                   <button className='bg-[#eee] h-8 w-8 rounded-full hover:bg-[#03C9D7]' title='Add new size'
                    onClick={handleListAdd}
-                  >+</button>               
+                  >+</button>  
+                  <IoWarningOutline className='collapse' fontSize='1em' color='orange' />             
                 </div>              
               </div>
               {
@@ -113,15 +116,20 @@ const LaySheetReport = () => {
                   />
                   <h2 className='col-span-1 flex justify-center'>{laySheetReportTemp[index].totalPalla}</h2>
                   <h2 className='col-span-1 flex justify-center'>{laySheetReportTemp[index].wastage}</h2>
-                  <div className="flex justify-center">
+                  <div className="flex justify-center gap-1">
                     <button className='bg-[#eee] h-8 w-8 rounded-full hover:bg-[#03C9D7]' title='Remove size' 
                     onClick={() => handleListRemove(index)}
                     >-</button>
+                    <Indicator current={laySheetReportTemp[index]} layLength={layLength}/>
                   </div>
                   
                  </div>
                 ))
               }
+            </div>
+            <div className="w-full mt-20 flex md:justify-end">
+              <button className='p-2 px-8 mr-4 rounded-lg w-fit bg-[#03C9D7]'>Save</button>
+              <button className='p-2 px-8 mr-10 rounded-lg w-fit bg-[#03C9D7]'>Submit</button>
             </div>           
           </div>
         </div>    
