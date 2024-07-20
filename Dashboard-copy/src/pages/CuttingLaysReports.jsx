@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { LaySheetForm, LaySheetReport } from '../components'
 import { useStateContext } from '../contexts/ContextProvider'
 
@@ -9,7 +9,7 @@ const CuttingLaysReports = () => {
   return (
     <div>
         <LaySheetForm />
-        {laySheetBase && <LaySheetReport/>}
+        {laySheetBase.layLength!=0 && <LaySheetReport/>}
     </div>
   )
 }

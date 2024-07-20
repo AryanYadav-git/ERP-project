@@ -199,7 +199,17 @@ const [activeOrders, setActiveOrders] = useState([
     const [finishingReceivedData, setFinishingReceivedData] = useState([]);
 
     const [sumupReportData, setSumUpReportData] = useState([]);
-    const [laySheetBase, setLaySheetBase] = useState(null);
+    const [laySheetBase, setLaySheetBase] = useState({
+        layLength: 0,
+        jobNo: "",
+        modelNo: '',
+        color: '',
+        compCount: 0,
+        cutQty:[{
+            size:'',
+            qty:0
+        },]
+    });
     const [laySheetReport, setLaySheetReport] = useState([
         {
             "thaanNo":1,

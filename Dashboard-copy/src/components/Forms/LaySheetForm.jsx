@@ -7,19 +7,14 @@ import axios from 'axios';
 const LaySheetForm = () => {
     const myDepartment = 'cutting';
     const [date, setDate] = useState(new Date().toJSON().slice(0,10));
-    const {setLaySheetBase, erpData} = useStateContext();
-    const [layLength, setLayLength] = useState();
-    const [jobNo, setJobNo] = useState();
-    const [modelNo, setModelNo] = useState();
-    const [color, setColor] = useState();
-    const [compCount, setCompCount] = useState();
+    const {laySheetBase, setLaySheetBase, erpData} = useStateContext();
+    const [layLength, setLayLength] = useState(laySheetBase.layLength);
+    const [jobNo, setJobNo] = useState(laySheetBase.jobNo);
+    const [modelNo, setModelNo] = useState(laySheetBase.modelNo);
+    const [color, setColor] = useState(laySheetBase.color);
+    const [compCount, setCompCount] = useState(laySheetBase.compCount);
 
-    const [cutSizeQtyList, setCutSizeQtyList] = useState([
-        {
-            size: "",
-            qty: 0,
-        }
-    ]);
+    const [cutSizeQtyList, setCutSizeQtyList] = useState(laySheetBase.cutQty);
 
     const handleSizeChange = (event, index) => {
         const { value } = event.target
