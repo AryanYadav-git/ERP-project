@@ -9,6 +9,7 @@ const cuttingRouter = require('./Routes/cutting');
 const productionRouter = require('./Routes/production');
 const finalReportRouter = require('./Routes/report');
 const finishingRouter = require('./Routes/finishing');
+const miscRouter = require('./Routes/functionals');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -48,6 +49,7 @@ app.use('/cutting', cuttingRouter);
 app.use('/production', productionRouter);
 app.use('/report', finalReportRouter);
 app.use('/finishing', finishingRouter);
+app.use('/e', miscRouter);
 
 // Start the server
 app.listen(port, () => {

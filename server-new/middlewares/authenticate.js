@@ -5,7 +5,7 @@ const SECRET = process.env.JWTKEY;
 const authenticateJwt = (req, res, next) => {
     // console.log(req.headers)
     const authHeader = req.headers.authorization;
-    // console.log(authHeader);
+    console.log(authHeader);
     try{
        if(authHeader){
         const token = authHeader.split(' ')[1];
@@ -15,7 +15,7 @@ const authenticateJwt = (req, res, next) => {
                 return;
             //   return res.sendStatus(401);
             }
-            // console.log(user);
+            console.log(user);
             req.user = user;
             next();
         });

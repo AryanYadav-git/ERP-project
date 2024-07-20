@@ -199,6 +199,23 @@ const [activeOrders, setActiveOrders] = useState([
     const [finishingReceivedData, setFinishingReceivedData] = useState([]);
 
     const [sumupReportData, setSumUpReportData] = useState([]);
+    const [laySheetBase, setLaySheetBase] = useState(null);
+    const [laySheetReport, setLaySheetReport] = useState([
+        {
+            "thaanNo":1,
+            "mtrs":0,
+            "palla":0,
+            "totalPalla":0,
+            "wastage":0
+        },
+        {
+            "thaanNo":2,
+            "mtrs":0,
+            "palla":0,
+            "totalPalla":0,
+            "wastage":0
+        },
+    ]);
     
 
     const setMode = (e) => {
@@ -214,7 +231,7 @@ const [activeOrders, setActiveOrders] = useState([
     const handleClick = (clicked) => setIsClicked({ ...initialState, [clicked]: true });
 
     return (
-        <StateContext.Provider value={{ currentColor, currentMode, activeMenu, screenSize, setScreenSize, handleClick, isClicked, initialState, setIsClicked, setActiveMenu, setCurrentColor, setCurrentMode, setMode, setColor, themeSettings, setThemeSettings, user, setUser, department, setDepartment, erpData, setErpData, name, setName, cuttingReceivedData, setCuttingReceivedData, cuttingReportsData, setCuttingReportsData, productionReceivedData, setProductionReceivedData, productionReportsData, setProductionReportsData, activeOrders, setActiveOrders, sumupReportData, setSumUpReportData, ironData, setIronData, packData, setPackData, finishingReceivedData, setFinishingReceivedData}}>
+        <StateContext.Provider value={{ currentColor, currentMode, activeMenu, screenSize, setScreenSize, handleClick, isClicked, initialState, setIsClicked, setActiveMenu, setCurrentColor, setCurrentMode, setMode, setColor, themeSettings, setThemeSettings, user, setUser, department, setDepartment, erpData, setErpData, name, setName, cuttingReceivedData, setCuttingReceivedData, cuttingReportsData, setCuttingReportsData, productionReceivedData, setProductionReceivedData, productionReportsData, setProductionReportsData, activeOrders, setActiveOrders, sumupReportData, setSumUpReportData, ironData, setIronData, packData, setPackData, finishingReceivedData, setFinishingReceivedData, laySheetBase, setLaySheetBase, laySheetReport, setLaySheetReport}}>
             {children}
         </StateContext.Provider>
     );

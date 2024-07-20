@@ -1,10 +1,15 @@
 import React from 'react'
-import { LaySheetForm } from '../components'
+import { LaySheetForm, LaySheetReport } from '../components'
+import { useStateContext } from '../contexts/ContextProvider'
 
 const CuttingLaysReports = () => {
+
+  const {laySheetBase, setLaySheetBase} = useStateContext();
+
   return (
     <div>
         <LaySheetForm />
+        {laySheetBase && <LaySheetReport/>}
     </div>
   )
 }
