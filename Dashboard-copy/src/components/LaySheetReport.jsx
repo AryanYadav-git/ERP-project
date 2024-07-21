@@ -2,22 +2,16 @@ import React, { useEffect, useState } from 'react'
 import { useStateContext } from '../contexts/ContextProvider'
 import Indicator from './Indicator';
 import { IoWarningOutline } from 'react-icons/io5';
+import toast, {Toaster} from 'react-hot-toast';
 
 
 const LaySheetReport = () => {
-    const {laySheetBase, laySheetReport} = useStateContext();
-    const [laySheetReportTemp, setLaySheetReportTemp] = useState([
-      {
-        // "thaanNo":1,
-        "mtrs":0,
-        "palla":0,
-        "totalPalla":0,
-        "wastage":0
-      },
-    ]);
+    const {laySheetBase, laySheetReport, setLaySheetReport} = useStateContext();
+    const [laySheetReportTemp, setLaySheetReportTemp] = useState(laySheetReport);
     let {layLength} = laySheetBase;
     layLength = Number(layLength);
     console.log(laySheetBase);
+    const [count, setCount] = useState(0);
 
     const handleListAdd = async () => {
       setLaySheetReportTemp([
@@ -29,6 +23,27 @@ const LaySheetReport = () => {
         }
       ])
     }
+
+    useEffect(()=> {
+      const base = [
+        {
+            "thaanNo":1,
+            "mtrs":0,
+            "palla":0,
+            "totalPalla":0,
+            "wastage":0
+        },
+      ]
+      console.log("count :"+count)
+      if(count!=0){
+        setLaySheetReportTemp(base);
+        setLaySheetReport(base);
+      }
+      else{
+        setCount(1);
+      }
+      console.log('changed laybase');
+  },[laySheetBase])
 
     const calculateTtlPalla = () => {
       let count = 0;
@@ -86,6 +101,7 @@ const LaySheetReport = () => {
   return (
     <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
       <div className='text-[grey] text-lg mb-4'>LaySheetReport</div>
+      <Toaster></Toaster>
       {/* <div className="">{layLength}</div> */}
       <div className="w-full md:mt-0 mt-2">
         <div className="">
@@ -128,7 +144,12 @@ const LaySheetReport = () => {
               }
             </div>
             <div className="w-full mt-20 flex md:justify-end">
-              <button className='p-2 px-8 mr-4 rounded-lg w-fit bg-[#03C9D7]'>Save</button>
+              <button className='p-2 px-8 mr-4 rounded-lg w-fit bg-[#03C9D7]' 
+              onClick={() => {
+                setLaySheetReport(laySheetReportTemp);
+                toast.success('saved');
+              }}
+              >Save</button>
               <button className='p-2 px-8 mr-10 rounded-lg w-fit bg-[#03C9D7]'>Submit</button>
             </div>           
           </div>

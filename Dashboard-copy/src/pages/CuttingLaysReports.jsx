@@ -1,15 +1,19 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { LaySheetForm, LaySheetReport } from '../components'
 import { useStateContext } from '../contexts/ContextProvider'
 
 const CuttingLaysReports = () => {
 
-  const {laySheetBase, setLaySheetBase} = useStateContext();
+  const {laySheetBase, setLaySheetBase, laySheetReport} = useStateContext();
+
+  useEffect(() => {
+    console.log(laySheetReport);
+  }, [laySheetReport])
 
   return (
     <div>
         <LaySheetForm />
-        {laySheetBase.layLength!=0 && <LaySheetReport/>}
+        {(laySheetBase.layLength != 0) && <LaySheetReport/>}
     </div>
   )
 }

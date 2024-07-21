@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import toast, { Toaster } from 'react-hot-toast'
 import Button from '../Button';
 import { useStateContext } from '../../contexts/ContextProvider';
@@ -7,7 +7,7 @@ import axios from 'axios';
 const LaySheetForm = () => {
     const myDepartment = 'cutting';
     const [date, setDate] = useState(new Date().toJSON().slice(0,10));
-    const {laySheetBase, setLaySheetBase, erpData} = useStateContext();
+    const {laySheetBase, setLaySheetBase, setLaySheetReport} = useStateContext();
     const [layLength, setLayLength] = useState(laySheetBase.layLength);
     const [jobNo, setJobNo] = useState(laySheetBase.jobNo);
     const [modelNo, setModelNo] = useState(laySheetBase.modelNo);
@@ -76,34 +76,86 @@ const LaySheetForm = () => {
                 
             })
             if(response.data.message){
-                toast.success(response.data.message);
+                console.log(response);
+                if(response.data.error){
+                    toast.error(response.data.message)
+                }else{
+                    toast.success(response.data.message);
+                }
+                
+                // setLaySheetReport([
+                //     {
+                //         "thaanNo":1,
+                //         "mtrs":0,
+                //         "palla":0,
+                //         "totalPalla":0,
+                //         "wastage":0
+                //     },
+                // ])
                 setLaySheetBase(base);
             }
         }catch(e){
+
             toast.error(e.response.data.message);
+            let newBase = laySheetBase;
+            newBase.layLength = 0;
+            console.log("newBase"+newBase);
+            setLaySheetBase(newBase);
         }
     }
 
     const handleNewEntry = () => {
+        setLaySheetBase({
+            layLength: 0,
+            jobNo: "",
+            modelNo: '',
+            color: '',
+            compCount: 0,
+            cutQty:[{
+                size:'',
+                qty:0
+            },]
+        });
         setColor('');
-        setCompCount('');
+        setCompCount(0);
         setJobNo('');
         setModelNo('');
-        setLayLength('');
+        setLayLength(0);
         setCutSizeQtyList([
             {
                 size: "",
                 qty: 0,
             }
         ]);
-        setLaySheetBase('');
+        setLaySheetReport([
+            {
+                "thaanNo":1,
+                "mtrs":0,
+                "palla":0,
+                "totalPalla":0,
+                "wastage":0
+            },
+        ])
     }
+
+    // useEffect(()=> {
+    //     setLaySheetReport([
+    //         {
+    //             "thaanNo":1,
+    //             "mtrs":0,
+    //             "palla":0,
+    //             "totalPalla":0,
+    //             "wastage":0
+    //         },
+    //     ]);
+    //     console.log('changed laybase')
+    // },[laySheetBase])
 
   return (
     <div className='m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl' id=''>
         <Toaster></Toaster>
         <div className="flex justify-between">
-            <h2 className='text-[grey] text-lg mb-4'>Lay Sheet Reports</h2>
+            <h2 className='text-[grey] text-lg mb-4'>Lay Sheet Reports (testing only)</h2>
             <button className=' text-blue-500 underline text-md mb-4 mr-4' onClick={handleNewEntry}>New Entry</button>
         </div>
         

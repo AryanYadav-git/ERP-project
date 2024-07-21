@@ -10,8 +10,14 @@ const router = express.Router();
 
 router.post("/laybase", authenticateJwt, authDep, async (req, res) => {
     try{
-        const {jobNo, modelNo, color, cutQty} = req.body.entry;
+        const {layLength, jobNo, modelNo, color, cutQty} = req.body.entry;
         const entryJob = await ERP.findOne({jobNo, modelNo, color});
+        console.log(isNaN(layLength));
+        if(isNaN(layLength)){
+            console.log(layLength);
+            res.status(200).send({message: 'invalid lay Length', error:true});
+            return;
+        }
         if(!entryJob) {
             console.log('in not job')
             res.status(400).send({message: 'This job is not active or doesn\'t exist'});
@@ -29,7 +35,7 @@ router.post("/laybase", authenticateJwt, authDep, async (req, res) => {
                 return;
             }
         }
-        res.status(200).send({message: 'good to go'});
+        res.status(200).send({message: 'good to go', error:false});
         
 
     }catch(e){

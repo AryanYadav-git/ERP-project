@@ -218,13 +218,6 @@ const [activeOrders, setActiveOrders] = useState([
             "totalPalla":0,
             "wastage":0
         },
-        {
-            "thaanNo":2,
-            "mtrs":0,
-            "palla":0,
-            "totalPalla":0,
-            "wastage":0
-        },
     ]);
     
 
